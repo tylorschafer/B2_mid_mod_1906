@@ -4,6 +4,10 @@ describe Author do
     it {should have_many(:books).through(:author_books)}
   end
 
+  describe 'validations' do
+    it {should validate_presence_of :name}
+  end
+
   describe "instance_methods" do
     before :each do
       @orwell = Author.create!(name: 'George Orwell')
