@@ -17,7 +17,7 @@ describe 'Book Index Page' do
         expect(page).to have_content("Title: #{book.title}")
         expect(page).to have_content("Number of Pages: #{book.pages}")
         expect(page).to have_content("Publication Year: #{book.publication}")
-        expect(page).to have_content("Author(s): #{book.authors.name}")
+        expect(page).to have_link("Author(s): #{book.authors.name}")
       end
     end
   end

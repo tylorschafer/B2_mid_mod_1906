@@ -4,6 +4,6 @@
     <h3>Title: <%= book.title %></h3>
     <p>Number of Pages: <%= book.pages %></p>
     <p>Publication Year: <%= book.publication %></p>
-    <p>Author(s): <%= book.authors.name %></p>
+    <%= link_to "Author(s): #{book.authors.name}" %>
   </section>
 <% end %>
