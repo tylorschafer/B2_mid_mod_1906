@@ -7,7 +7,6 @@ describe 'Author Show Page' do
     @book_3 = @orwell.books.create!(title: 'Animal Farm', pages: 125, publication: 1960)
     @martin = Author.create!(name: 'George R. R. Martin')
     @book_2 = @martin.books.create!(title: 'Game of Thrones', pages: 10002, publication: 1992)
-    @books = [@book_1,@book_2]
   end
 
   describe "After clicking an authors name I am taken to their show page" do
@@ -15,15 +14,17 @@ describe 'Author Show Page' do
 
       visit '/books'
 
-      click_link("#{@orwell.name}")
+      within "#book-#{@book_1.id}" do
+        click_link("#{@orwell.name}")
+      end
 
       expect(current_path).to eq("/authors/#{@orwell.id}")
 
       expect(page).to have_content(@orwell.name)
       expect(page).to_not have_content(@martin.name)
-      expect(page).to have_content("Books: #{@book_1.name}, #{@book_3.name}")
-      expect(page).to have_link(@book_1.name)
-      expect(page).to have_link(@book_3.name)
+      expect(page).to have_content("Books: #{@book_1.title} #{@book_3.title}")
+      expect(page).to have_link(@book_1.title)
+      expect(page).to have_link(@book_3.title)
       expect(page).to have_content("Average Page Count: 191")
     end
   end

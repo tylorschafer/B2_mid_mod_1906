@@ -1,0 +1,9 @@
+<h1><%= @author.name %></h1>
+
+<span>
+  <p>Books:
+  <% @author.books.each do |book| %>
+    <%= link_to book.title %>
+  <% end %>
+  </p>
+</span>
